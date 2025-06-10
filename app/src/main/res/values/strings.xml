@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Jewish Calendar Widget</string>
+
+    <!-- Strings for the Jewish Calendar Widget itself (from appwidget-provider metadata) -->
+    <string name="jewish_calendar_widget_app">Jewish Calendar Widget</string>
+    <string name="jewish_calendar_widget_description">Displays the current Gregorian and Jewish date and time.</string>
+
+    <!-- Strings for the MainActivity (the app's launch screen) -->
+    <string name="main_welcome_message">Welcome to the Jewish Calendar Widget! To use it, please add it to your home screen.</string>
+    <string name="main_add_widget_button_text">Add Widget to Home Screen</string>
+    <string name="main_manual_instructions">If the button above doesn\'t work, long-press on your home screen, select \'Widgets\', and find \'Jewish Calendar Widget\'.</string>
+    <string name="toast_widget_request_sent">Request to add widget sent to launcher. Look for it on your home screen!</string>
+    <string name="toast_widget_add_failed">Failed to add widget. Please try manually.</string>
+    <string name="toast_auto_add_not_supported">Automatic widget adding not supported by your launcher. Please add manually.</string>
+    <string name="toast_add_manually_old_android">Please add the widget manually from your home screen.</string>
+    <string name="add_widget_to_home_screen">Add Widget to Home Screen</string>
+    <string name="long_press_on_your_home_screen_select_widgets_and_add_the_jewish_calendar_widget">Long press on your home screen, select Widgets, and add the Jewish Calendar Widget</string>
+    <string name="hebrew_calendar_for_android">Hebrew Calendar for Android</string>
+    <string name="jewish_calendar_widget">Jewish Calendar Widget</string>
+    <string name="test">יב׳ סיון תשפ״ה</string>
+    <string name="long_press_on_your_home_screen">basic\n</string>
+
+</resources>

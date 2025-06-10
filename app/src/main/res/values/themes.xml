@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="android:Theme.Material.Light">
+        <item name="android:colorPrimary">#1976D2</item>
+        <item name="android:colorPrimaryDark">#1565C0</item>
+        <item name="android:colorAccent">#2196F3</item>
+        <item name="android:windowBackground">#E3F2FD</item>
+        <item name="android:textColorPrimary">#212121</item>
+        <item name="android:textColorSecondary">#757575</item>
+    </style>
+
+    <style name="HebrewTextStyle">
+        <item name="android:textDirection">rtl</item>
+        <item name="android:fontFamily">serif</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+</resources>

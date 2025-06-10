@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service-config>
+    <persistent enabled="true" />
+    <critical enabled="true" />
+    <restart-policy>always</restart-policy>
+</service-config>
