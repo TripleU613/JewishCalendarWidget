@@ -4,23 +4,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
-    android:padding="16dp"
-    android:clipToPadding="true">
+    android:padding="2dp"
+    android:clipToPadding="false">
 
     <!-- Huge Time Display -->
     <TextClock
         android:id="@+id/widget_clock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="2dp"
+        android:fontFamily="sans-serif-thin"
         android:format12Hour="h:mm"
         android:format24Hour="h:mm"
+        android:letterSpacing="0.05"
         android:textColor="#FFFFFF"
         android:textSize="96sp"
-        android:textStyle="bold"
-        android:fontFamily="sans-serif-thin"
-        android:letterSpacing="0.05" />
+        android:textStyle="bold" />
 
     <!-- English Date -->
     <TextView
@@ -29,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/widget_clock"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:textColor="#FFFFFF"
         android:textSize="22sp"
         android:textStyle="normal"
