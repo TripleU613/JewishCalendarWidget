@@ -1,4 +1,7 @@
 
+
+
+
 ---
 
 # ✡️ Jewish Calendar Widget
@@ -55,3 +58,18 @@ This widget is:
 Let your phone live on Jewish time.
 
 ---
+
+## ⚠️🚫 Project Usage Notice
+
+> 🛠️ **This project is intended for private, non-commercial use only.**  
+> 📦 **Redistribution, resale, or inclusion in any commercial bundle is strictly forbidden.**  
+>  
+> 🔒 Licensed under the [GNU General Public License v3.0 (GPL-3.0)](https://www.gnu.org/licenses/gpl-3.0.html) —  
+> you are free to use, study, and modify this project **for personal purposes only**.
+>  
+> 💸 **Using this code in a paid product, reselling it, or profiting from it in any way violates the license.**
+
+📚 Related Resources:  
+- [GPL License Summary](https://choosealicense.com/licenses/gpl-3.0/)  
+- [GPL FAQ (gnu.org)](https://www.gnu.org/licenses/gpl-faq.html)  
+- [Full License Text](https://www.gnu.org/licenses/gpl-3.0.txt)
