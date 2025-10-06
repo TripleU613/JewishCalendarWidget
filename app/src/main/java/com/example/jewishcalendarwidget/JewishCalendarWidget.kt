@@ -25,14 +25,30 @@ class JewishCalendarWidget : AppWidgetProvider() {
             updateAppWidget(context, appWidgetManager, appWidgetId)
         }
 
-        val serviceIntent = Intent(context, WidgetUpdateService::class.java)
-        context.startService(serviceIntent)
+        // Ensure background update service is running
+        startUpdateService(context)
     }
 
     override fun onEnabled(context: Context) {
         super.onEnabled(context)
+        // Start the background update service when first widget is added
+        startUpdateService(context)
+    }
+
+    override fun onDisabled(context: Context) {
+        super.onDisabled(context)
+        // Stop the background update service when last widget is removed
         val serviceIntent = Intent(context, WidgetUpdateService::class.java)
-        context.startService(serviceIntent)
+        context.stopService(serviceIntent)
+    }
+
+    private fun startUpdateService(context: Context) {
+        val serviceIntent = Intent(context, WidgetUpdateService::class.java)
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            context.startForegroundService(serviceIntent)
+        } else {
+            context.startService(serviceIntent)
+        }
     }
 
     override fun onReceive(context: Context, intent: Intent) {

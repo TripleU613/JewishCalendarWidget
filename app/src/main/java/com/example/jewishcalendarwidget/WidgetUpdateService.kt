@@ -1,21 +1,42 @@
 package com.example.jewishcalendarwidget
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.app.Service
 import android.content.Intent
+import android.os.Build
 import android.os.IBinder
 import android.os.Handler
 import android.os.Looper
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.os.PowerManager
+import androidx.core.app.NotificationCompat
 
 class WidgetUpdateService : Service() {
     private val handler = Handler(Looper.getMainLooper())
     private var updateRunnable: Runnable? = null
     private var wakeLock: PowerManager.WakeLock? = null
 
+    companion object {
+        private const val CHANNEL_ID = "widget_update_channel"
+        private const val NOTIFICATION_ID = 1
+    }
+
     override fun onCreate() {
         super.onCreate()
+
+        // Start as foreground service on Android 8.0+ (API 26+)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            createNotificationChannel()
+            val notification = NotificationCompat.Builder(this, CHANNEL_ID)
+                .setContentTitle("Jewish Calendar Widget")
+                .setContentText("Keeping widget updated")
+                .setSmallIcon(android.R.drawable.ic_menu_day)
+                .setPriority(NotificationCompat.PRIORITY_MIN)
+                .build()
+            startForeground(NOTIFICATION_ID, notification)
+        }
 
         // Acquire wake lock for system app
         val powerManager = getSystemService(POWER_SERVICE) as PowerManager
@@ -26,6 +47,20 @@ class WidgetUpdateService : Service() {
         wakeLock?.acquire()
 
         startPeriodicUpdates()
+    }
+
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(
+                CHANNEL_ID,
+                "Widget Update Service",
+                NotificationManager.IMPORTANCE_MIN
+            ).apply {
+                description = "Keeps Jewish Calendar Widget updated"
+            }
+            val notificationManager = getSystemService(NotificationManager::class.java)
+            notificationManager?.createNotificationChannel(channel)
+        }
     }
 
     private fun startPeriodicUpdates() {
@@ -62,7 +97,11 @@ class WidgetUpdateService : Service() {
 
         // Restart service
         val restartIntent = Intent(this, WidgetUpdateService::class.java)
-        startService(restartIntent)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            startForegroundService(restartIntent)
+        } else {
+            startService(restartIntent)
+        }
     }
 
     override fun onBind(intent: Intent?): IBinder? = null
