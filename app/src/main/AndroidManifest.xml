@@ -49,6 +49,16 @@
         android:persistent="true"
         android:supportsRtl="true">
 
+        <!-- Launcher activity that shows widget picker -->
+        <activity android:name=".WidgetLauncherActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <receiver android:name=".JewishCalendarWidget"
             android:exported="true"
             android:label="@string/app_name">
