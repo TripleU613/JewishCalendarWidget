@@ -13,13 +13,9 @@ class AppBootReceiver : BroadcastReceiver() {
             Intent.ACTION_PACKAGE_REPLACED,
             "android.intent.action.QUICKBOOT_POWERON" -> {
 
-                // Start service immediately (use startForegroundService on Android 8.0+)
+                // Start service as regular background service (system app doesn't need foreground)
                 val serviceIntent = Intent(context, WidgetUpdateService::class.java)
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    context.startForegroundService(serviceIntent)
-                } else {
-                    context.startService(serviceIntent)
-                }
+                context.startService(serviceIntent)
             }
         }
     }

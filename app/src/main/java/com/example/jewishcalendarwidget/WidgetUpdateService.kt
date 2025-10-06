@@ -26,17 +26,7 @@ class WidgetUpdateService : Service() {
     override fun onCreate() {
         super.onCreate()
 
-        // Start as foreground service on Android 8.0+ (API 26+)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            createNotificationChannel()
-            val notification = NotificationCompat.Builder(this, CHANNEL_ID)
-                .setContentTitle("Jewish Calendar Widget")
-                .setContentText("Keeping widget updated")
-                .setSmallIcon(android.R.drawable.ic_menu_day)
-                .setPriority(NotificationCompat.PRIORITY_MIN)
-                .build()
-            startForeground(NOTIFICATION_ID, notification)
-        }
+        // No foreground notification for system app - launcher handles persistence
 
         // Acquire wake lock for system app
         val powerManager = getSystemService(POWER_SERVICE) as PowerManager
@@ -97,11 +87,7 @@ class WidgetUpdateService : Service() {
 
         // Restart service
         val restartIntent = Intent(this, WidgetUpdateService::class.java)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            startForegroundService(restartIntent)
-        } else {
-            startService(restartIntent)
-        }
+        startService(restartIntent)
     }
 
     override fun onBind(intent: Intent?): IBinder? = null
