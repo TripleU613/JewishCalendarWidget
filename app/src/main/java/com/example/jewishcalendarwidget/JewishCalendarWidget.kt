@@ -44,11 +44,7 @@ class JewishCalendarWidget : AppWidgetProvider() {
 
     private fun startUpdateService(context: Context) {
         val serviceIntent = Intent(context, WidgetUpdateService::class.java)
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            context.startForegroundService(serviceIntent)
-        } else {
-            context.startService(serviceIntent)
-        }
+        context.startService(serviceIntent)
     }
 
     override fun onReceive(context: Context, intent: Intent) {
